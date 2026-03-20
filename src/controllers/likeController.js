@@ -25,7 +25,7 @@ const unlikePost = async (req, res) => {
   const postId = parseInt(req.params.id);
 
   try {
-    await prisma.like.deletemany({
+    await prisma.like.deleteMany({
       where: { userId, postId }
     });
     res.json({ message: "Post unliked" })
