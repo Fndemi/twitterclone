@@ -22,8 +22,8 @@ const createPost = async (req, res) => {
 const getPosts = async (req, res) => {
   try {
     const posts = await prisma.post.findMany({
-      where: { authorId: req.ser.id },
-      orderBy: { cretedAt: "desc" },
+      where: { authorId: req.user.id },
+      orderBy: { createdAt: "desc" },
     });
     res.json({ posts });
 

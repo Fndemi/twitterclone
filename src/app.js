@@ -3,6 +3,10 @@ const express = require("express");
 const cors = require("cors");
 //it allows our backend to accept requests from different domains
 const postRoutes = require("./routes/posts");
+const followRoutes = require("./routes/follow");
+const feedRoutes = require("./routes/feed");
+const likeRoutes = require("./routes/likes");
+const commentRoutes = require("./routes/comments");
 const app = express();
 //Creates an express application instance
 
@@ -16,4 +20,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/posts", postRoutes);
+app.use("/api/follow", followRoutes);
+app.use("/api/feed", feedRoutes);
+app.use("/api/likes", likeRoutes);
+app.use("/api/comments", commentRoutes);
 module.exports = app;
