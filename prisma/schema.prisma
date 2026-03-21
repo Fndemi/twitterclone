@@ -29,6 +29,9 @@ model Post {
   likes     Like[]
   comments  Comment[]
   createdAt DateTime  @default(now())
+
+  @@index([authorId]) //speeds up queries
+  @@index([createdAt]) //speeds up sorting
 }
 
 model Follower {

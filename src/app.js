@@ -7,12 +7,14 @@ const followRoutes = require("./routes/follow");
 const feedRoutes = require("./routes/feed");
 const likeRoutes = require("./routes/likes");
 const commentRoutes = require("./routes/comments");
+const limiter = require("./middleware/rateLimiter");
 const app = express();
 //Creates an express application instance
 
 //middleware
 app.use(cors()); //allows requests from anywhere(by default)
 app.use(express.json()); //Parses incoming JSON requests so you an access req.body in your routes
+app.use(limiter); // Apply rate limiting middleware globally
 
 app.get("/", (req, res) => {
   res.send("API is running ...");
